@@ -66,3 +66,19 @@ const sortedCars =(cars)=>{
 }
 
 // console.log(sortedCars(cars))
+
+// Problem 5:
+const person = [
+  { name: "Rahim", age: 25, gender: "male" },
+  { name: "Karima", age: 22, gender: "female" },
+  { name: "Sabbir", age: 28, gender: "male" },
+  { name: "Nusrat", age: 24, gender: "female" },
+  { name: "Tanvir", age: 30, gender: "male" }
+];
+
+
+const findAndModifyAge = (name, age)=>{
+ return person.map(p=> p.name === name? {...p,age } : p)
+}
+
+console.log(findAndModifyAge("Tanvir", 10))
