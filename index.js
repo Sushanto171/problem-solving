@@ -44,12 +44,11 @@ const add5 = (num) => {
   return num + 5;
 };
 
-const squareDoubleAddFive= (num) => {
+const squareDoubleAddFive = (num) => {
   return add5(double(square(num)));
 };
 
 // console.log(squareDoubleAddFive(10))
-
 
 // Problem 4:
 
@@ -58,12 +57,12 @@ const cars = [
   { make: "Honda", model: "Civic", year: 2015 },
   { make: "Tesla", model: "Model 3", year: 2021 },
   { make: "Ford", model: "Mustang", year: 2012 },
-  { make: "BMW", model: "X5", year: 2019 }
+  { make: "BMW", model: "X5", year: 2019 },
 ];
 
-const sortedCars =(cars)=>{
-  return cars.sort((a,b)=> a.year - b.year)
-}
+const sortedCars = (cars) => {
+  return cars.sort((a, b) => a.year - b.year);
+};
 
 // console.log(sortedCars(cars))
 
@@ -73,12 +72,23 @@ const person = [
   { name: "Karima", age: 22, gender: "female" },
   { name: "Sabbir", age: 28, gender: "male" },
   { name: "Nusrat", age: 24, gender: "female" },
-  { name: "Tanvir", age: 30, gender: "male" }
+  { name: "Tanvir", age: 30, gender: "male" },
 ];
 
+const findAndModifyAge = (name, age) => {
+  return person.map((p) => (p.name === name ? { ...p, age } : p));
+};
 
-const findAndModifyAge = (name, age)=>{
- return person.map(p=> p.name === name? {...p,age } : p)
-}
+// console.log(findAndModifyAge("Tanvir", 10))
 
-console.log(findAndModifyAge("Tanvir", 10))
+// Problem 6:
+
+const sumOfEvenNumbers = (numbers) => {
+
+  return numbers.reduce(
+    (prev, current) => (Object.is(current % 2, 0) ? prev + current : prev),
+    0
+  );
+};
+
+console.log(sumOfEvenNumbers([1, 3, 4, 2,-4]));
