@@ -84,11 +84,23 @@ const findAndModifyAge = (name, age) => {
 // Problem 6:
 
 const sumOfEvenNumbers = (numbers) => {
-
   return numbers.reduce(
     (prev, current) => (Object.is(current % 2, 0) ? prev + current : prev),
     0
   );
 };
 
-console.log(sumOfEvenNumbers([1, 3, 4, 2,-4]));
+// console.log(sumOfEvenNumbers([1, 3, 4, 2,-4]));
+
+// Problem 7:
+
+const isLeapYear = (year) => {
+  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+};
+
+// const year = 2028;
+// if (isLeapYear(year)) {
+//   console.log(`${year} is a leap year. Happy New Year!`);
+// } else {
+//   console.log(`${year} is not a leap year. Happy New Year!`);
+// }
