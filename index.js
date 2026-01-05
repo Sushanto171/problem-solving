@@ -15,4 +15,21 @@ const getNonFemalePersonNames = (people) => {
   return nonFemalePerson.map(n => n.name)
 }
 
-console.log(getNonFemalePersonNames(people))
+// console.log(getNonFemalePersonNames(people))
+
+
+// Problem 2 :
+
+const books = [
+  { title: "Clean Code", author: "Robert C. Martin", year: 2008 },
+  { title: "You Don't Know JS", author: "Kyle Simpson", year: 2015 },
+  { title: "The Pragmatic Programmer", author: "Andrew Hunt", year: 1999 },
+  { title: "Refactoring", author: "Martin Fowler", year: 2018 },
+  { title: "Design Patterns", author: "Erich Gamma", year: 1994 }
+];
+
+const getBooksTitle = (books)=>{
+  return books.map(b=> b.title)
+}
+
+// console.log(getBooksTitle(books))
