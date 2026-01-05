@@ -49,3 +49,20 @@ const squareDoubleAddFive= (num) => {
 };
 
 // console.log(squareDoubleAddFive(10))
+
+
+// Problem 4:
+
+const cars = [
+  { make: "Toyota", model: "Corolla", year: 2018 },
+  { make: "Honda", model: "Civic", year: 2015 },
+  { make: "Tesla", model: "Model 3", year: 2021 },
+  { make: "Ford", model: "Mustang", year: 2012 },
+  { make: "BMW", model: "X5", year: 2019 }
+];
+
+const sortedCars =(cars)=>{
+  return cars.sort((a,b)=> a.year - b.year)
+}
+
+// console.log(sortedCars(cars))
