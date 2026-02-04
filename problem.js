@@ -98,13 +98,25 @@ function fullName(users){
   return users.map(user=> user.firstName + " "+ user.lastName)
 }
 
-console.log(fullName(users));
+// console.log(fullName(users));
 
 // Problem 3: Convert Celsius to Fahrenheit
 const celsius = [0, 10, 20, 30];
 // Formula: (C * 9/5) + 32
 // Expected: [32, 50, 68, 86]
 
+function celsiusToFahrenheit (arr){
+  return arr.map(n=> (n * 9/5 ) +32 )
+}
+
+// console.log(celsiusToFahrenheit(celsius));
+
 // Problem 4: Add index to each item
 const fruits = ["apple", "banana", "orange"];
 // Expected: ["1. apple", "2. banana", "3. orange"]
+
+function addIndex (arr){
+  return arr.map((item, i)=> `${++i}. ${item}`)
+}
+
+console.log(addIndex(fruits));
