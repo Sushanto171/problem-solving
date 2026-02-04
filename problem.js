@@ -66,5 +66,39 @@ function findMax(arr) {
 
 }
 
-console.log(findMax([1, 5, 3, 9, 2]), findMax([-1, -5, -3, -2])
-, findMax([100, 200, 50, 300, 250])); 
+// console.log(findMax([1, 5, 3, 9, 2]), findMax([-1, -5, -3, -2])
+// , findMax([100, 200, 50, 300, 250])); 
+
+// Problem 1: Square all numbers
+const nums = [2, 4, 6, 8];
+// Expected: [4, 16, 36, 64]
+
+function square(arr){
+// way 1
+ return arr.map((n)=> n * n)
+
+// way 2
+// const values = []
+// for(let i = 0; i < arr.length; i++){
+//   values.push(arr[i] * arr[i])
+// }
+// return values
+}
+
+console.log(square(nums));
+
+// Problem 2: Get full names
+const users = [
+    { firstName: "John", lastName: "Doe" },
+    { firstName: "Jane", lastName: "Smith" }
+];
+// Expected: ["John Doe", "Jane Smith"]
+
+// Problem 3: Convert Celsius to Fahrenheit
+const celsius = [0, 10, 20, 30];
+// Formula: (C * 9/5) + 32
+// Expected: [32, 50, 68, 86]
+
+// Problem 4: Add index to each item
+const fruits = ["apple", "banana", "orange"];
+// Expected: ["1. apple", "2. banana", "3. orange"]
