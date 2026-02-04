@@ -37,8 +37,34 @@ function countFreq(arr) {
    return freq;
  }
 
- console.log(countFreq(["a","b","a"]));
-
-
+//  console.log(countFreq(["a","b","a"]))
 
 // console.log(obj.a = obj.a +1 )
+
+
+
+function findMax(arr) {
+    let max = arr[0]
+
+    // built in method
+    // arr.forEach(num => {
+    //   if(num > max){
+    //     max = num
+    //   }
+    // });
+
+    //without built in method 
+    // for(let i = 0;i < arr.length ; i ++){
+    //   if(arr[i]> max){
+    //     max = arr[i]
+    //   }
+    // }
+
+    // return max
+
+    return arr.reduce((max, current )=>current > max? current: max ,arr[0])
+
+}
+
+console.log(findMax([1, 5, 3, 9, 2]), findMax([-1, -5, -3, -2])
+, findMax([100, 200, 50, 300, 250])); 
