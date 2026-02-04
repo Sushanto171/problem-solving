@@ -85,7 +85,7 @@ function square(arr){
 // return values
 }
 
-console.log(square(nums));
+// console.log(square(nums));
 
 // Problem 2: Get full names
 const users = [
@@ -93,6 +93,12 @@ const users = [
     { firstName: "Jane", lastName: "Smith" }
 ];
 // Expected: ["John Doe", "Jane Smith"]
+
+function fullName(users){
+  return users.map(user=> user.firstName + " "+ user.lastName)
+}
+
+console.log(fullName(users));
 
 // Problem 3: Convert Celsius to Fahrenheit
 const celsius = [0, 10, 20, 30];
