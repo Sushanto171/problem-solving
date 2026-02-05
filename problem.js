@@ -1,5 +1,7 @@
 //  removeDuplicates([1,1,2,2,3]) -> [1,2,3]
 
+import { getFullNames } from "./senior";
+
 function removeDuplicates(arr) {
    const result = [];
    for (let i = 0; i < arr.length; i++) {
@@ -119,4 +121,7 @@ function addIndex (arr){
   return arr.map((item, i)=> `${++i}. ${item}`)
 }
 
-console.log(addIndex(fruits));
+// console.log(addIndex(fruits));
+
+console.log( getFullNames());
+
