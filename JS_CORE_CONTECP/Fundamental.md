@@ -163,3 +163,90 @@ Classes hoist হয় কিন্তু `let`/`const` এর মতো TDZ �
 
  JavaScript Code execution এ hoisting এর মাধমে variables গুলোকে scope এর top নিয়ে যায়। এক্ষেত্রে `let`, `const` দ্বারা declare কৃত variables গুলো uninitialize অবস্থায় থাকে যতক্ষণ না code execution declaration line এ পৌছায়। আর এই hoisting থেকে actual declaration line পর্যন্ত মধ্যবর্তী zone এই হল Temporal Death Zone (TDZ)।
 
+## 4. JIT কী?
+JIT মানে হলো *"Just-In-Time Compilation"* - এটা একটা compilation technique যেখানে code run করার সময়ই (runtime এ) compile হয়। JavaScript engine code কে machine code এ convert করে execution এর ঠিক আগ মুহূর্তে, যখন দরকার তখন।
+
+## 5. JavaScript concurrency কি?
+  Concurrency মানে হলো একই সময়ে multiple tasks handle করার capability। এটা এমন যেন তুমি একসাথে গান শুনছো, পড়াশোনা করছো আর খাচ্ছো - মনে হয় সব একসাথে হচ্ছে, কিন্তু আসলে তুমি দ্রুত tasks এর মধ্যে switch করছো।
+### Technical ব্যাখ্যা:
+Concurrency হলো একটা programming concept যেখানে multiple tasks একসাথে progress করে। JavaScript এ এটা asynchronous programming এর মাধ্যমে achieve করা হয়, যদিও JavaScript single-threaded।
+``` javascript
+console.log("1");
+
+setTimeout(() => {
+    console.log("2");
+}, 0);
+
+console.log("3");
+```
+
+**Step-by-step Execution:**
+```
+Step 1: console.log("1")
+┌──────────────┐
+│ Call Stack   │
+│ console.log  │  → Output: "1"
+└──────────────┘
+
+Step 2: setTimeout() 
+┌──────────────┐         ┌────────────────┐
+│ Call Stack   │         │   Web API      │
+│ setTimeout   │────────▶│  Timer (0ms)   │
+└──────────────┘         └────────────────┘
+                                │
+                                │ After 0ms
+                                ▼
+                         ┌────────────────┐
+                         │ Callback Queue │
+                         │ [callback]     │
+                         └────────────────┘
+
+Step 3: console.log("3")
+┌──────────────┐
+│ Call Stack   │
+│ console.log  │  → Output: "3"
+└──────────────┘
+
+Step 4: Call Stack empty, Event Loop picks callback
+┌──────────────┐         ┌────────────────┐
+│ Call Stack   │  ◀────  │ Callback Queue │
+│ callback     │         │                │
+└──────────────┘         └────────────────┘
+                         → Output: "2"
+```
+
+**Output:**
+```
+1
+3
+2
+```
+
+### Core Components বিস্তারিত (Event Loop)
+1. Call Stack (Execution Context):
+JavaScript code execute করার জায়গা। LIFO (Last In, First Out) principle follow করে।
+2. Web APIs (Browser/Node.js Runtime):
+Browser বা Node.js যে features provide করে, যেগুলো JavaScript engine এর বাইরে run হয়।
+    #### Examples:
+      - setTimeout() / setInterval()
+      - fetch() / XMLHttpRequest
+      - DOM Events (click, scroll, etc.)
+      - Promise
+      - File I/O (Node.js)
+
+      👉 Important: এগুলো asynchronously run হয়, main thread block করে না।
+3. Callback Queue (Task Queue):
+Asynchronous operations complete হলে তাদের callbacks এখানে wait করে। FIFO (First In, First Out) order follow করে।
+    #### Types:
+    - a. Macro Task Queue (Task Queue)
+
+    - b. Micro Task Queue (Job Queue) - Higher Priority!
+    #### Priority Order:
+
+     - Call Stack (highest)
+     - Microtask Queue
+     - Macrotask Queue (lowest)
+
+4. Event Loop:
+Continuously `Call Stack` এবং `Queues` monitor করে , আর callbacks কে Call stack এ push করে।
+
