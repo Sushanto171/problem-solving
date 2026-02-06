@@ -126,7 +126,39 @@ outer();
 
 ```
 
-## 2. TDZ কি?
+
+
+
+
+## 2. Hoisting কি?
+
+Hoisting হলো JavaScript এর একটা default behavior যেখানে execution phase এর আগে অর্থাৎ creation phase এ variable এবং function declarations কে তাদের scope এর top এ তুলে নিয়ে যায় (conceptually)। মানে একটা variable নিচে declare করলেও, JavaScript internally সেটাকে উপরে নিয়ে 
+
+### কী কী Hoist হয়?
+1. Variable Declarations (var, let, const)
+2. Function Declarations
+3. Function Expressions (partially)
+4. Class Declarations (with TDZ)
+
+### 1. Variable Declarations (var, let, const)
+- ### var Hoisting - বিস্তারিত
+    `var` declarations scope এর top এ hoist হয় এবং `undefined` দিয়ে initialize হয়। এটাই `var` এর সবচেয়ে confusing behavior।
+- ### let এবং const Hoisting - বিস্তারিত
+    `let` এবং `const` ও hoist হয়, কিন্তু initialize হয় না। এরা Temporal Dead Zone (TDZ) এ থাকে declaration line 
+    
+### 2. Function Declaration Hoisting - বিস্তারিত
+Function declarations সম্পূর্ণভাবে hoist হয় - declaration এবং definition দুটোই। তাই function কে define করার আগেই call করা যায়।
+
+### 3. Function Expression Hoisting - বিস্তারিত
+- ### Function expression
+    Function expressions variable এর মতো hoist হয়। Variable declaration hoist হয় কিন্তু assignment (function) হয় 
+- ### Arrow Function 
+    Arrow functions ও function expressions এর মতো behave করে। Variable hoisted হয় কিন্তু function assignment হয় না।
+
+### 4. Class Hoisting - বিস্তারিত
+Classes hoist হয় কিন্তু `let`/`const` এর মতো TDZ তে থাকে। Declaration আগে use করা যায় না।
+
+## 3.Temporal Death Zone (TDZ) কি?
  Temporal Death Zone হলো Javascript এর behavior যেখানে variables declare করার আগে access করলে reference error দেয়।
 
  JavaScript Code execution এ hoisting এর মাধমে variables গুলোকে scope এর top নিয়ে যায়। এক্ষেত্রে `let`, `const` দ্বারা declare কৃত variables গুলো uninitialize অবস্থায় থাকে যতক্ষণ না code execution declaration line এ পৌছায়। আর এই hoisting থেকে actual declaration line পর্যন্ত মধ্যবর্তী zone এই হল Temporal Death Zone (TDZ)।
